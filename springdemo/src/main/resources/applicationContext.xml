@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+
+
+        <!--创建person对象-->
+        <bean id="zi" class="ZI"></bean>
+
+        <bean id="person" class="Person"></bean>
+        <bean id="car" class="Car">
+                <property name="cname" value="宝马"></property>
+                <property name="price" value="50.0"></property>
+        </bean>
+        <!--setter注入-->
+        <bean id="person1" class="Person">
+                <!--给对象设置初始值-->
+                <property name="pname" value="张三"></property>
+                <property name="age" value="20"></property>
+                <property name="car" ref="car"></property>
+                <property name="hobbies">
+                        <array>
+                                <value>唱歌</value>
+                                <value>跳舞</value>
+                                <value>跑步</value>
+                        </array>
+                </property>
+                <property name="carList">
+                        <list>
+                                <bean class="Car">
+                                        <property name="cname" value="奔驰"></property>
+                                        <property name="price" value="100.0"></property>
+                                </bean>
+                                <bean class="Car">
+                                        <property name="cname" value="宾利"></property>
+                                        <property name="price" value="300.0"></property>
+                                </bean>
+                        </list>
+                </property>
+        </bean>
+        </beans>

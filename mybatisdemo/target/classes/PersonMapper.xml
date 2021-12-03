@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.offcn.dao.PersonMapper">
+    <resultMap id="personResult" type="com.offcn.bean.Person">
+        <id column="id" property="id"></id>
+        <result column="pname" property="pname"></result>
+        <result column="age" property="age"></result>
+        <result column="paddress" property="paddress"></result>
+        <result column="birthday" property="birthday"></result>
+    </resultMap>
+
+<insert id="addPerson">
+    insert into person(id,pname,age,paddress,birthday) values (#{id},#{pname},#{age},#{paddress},#{birthday})
+
+</insert>
+
+    <update id="updatePerson">
+        update person set pname=#{pname},age=#{age},paddress=#{paddress},birthday=#{birthday} where id=#{id}
+    </update>
+
+<delete id="deletePerson">
+    delete from  person where id=#{id}
+</delete>
+
+<select id="selectPersonById" resultMap="personResult">
+    select id,pname,age,paddress,birthday from person where id=#{id}
+</select>
+    
+
+</mapper>
